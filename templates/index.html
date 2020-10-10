@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<!--Code By Webdevtrick ( https://webdevtrick.com )-->
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Full Page Scrolling | Webdevtrick.com</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.6.6/jquery.fullPage.css'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">  
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <style>
+    .img-glow {
+      -moz-box-shadow: 0 0 5px #fff;
+      -webkit-box-shadow: 5px 5px 5px #fff;
+      box-shadow: 0px 0px 10px #fff;
+    }
+
+    #cross {
+      background-color: Transparent;
+      background-repeat:no-repeat;
+      border: 2px #fff solid;
+      border-radius: 50%;
+      cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="fullpage">
+      <section class="vertical-scrolling frost-gradient">
+        <div class="d-flex flex-column align-items-center" style="width: 100%"> 
+            <div>
+                <h1 class="landing-page-heading">STYLE-ME</h1>     
+                <p class="container landing-page-subheading">Personalized Fashion Outfit Recommendation Sysem using Categoical Visual Preference Modelling</p>         
+            </div>
+            <div>
+                <a href="#secondSection"><button type="button" class="btn btn-primary btn-lg">START</button></a>
+            </div>
+        </div>
+      </section>
+    <section class="vertical-scrolling frost-gradient">
+      <div class="row">
+        <div class="col-12">
+          <div class='container'>
+            <h2 class="landing-page-heading">Select Gender:</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6" style="border-right: 2px solid white;">
+          <div class="row">
+            <div class="col-12">
+                <div class="container">
+                  <img src="{{url_for('static', filename='man_icon.svg')}}" id="male-gender" class="gender-img" />
+                </div>
+            </div>
+            <div class="col-12">
+                <h2 class='gender-text'>Male</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-6" style="border-left: 2px solid white;">
+            <div class="row">
+                <div class="col-12">
+                    <div class="container">
+                      <img src="{{url_for('static', filename='woman_icon.svg')}}" id="female-gender" class="gender-img" />
+                    </div>
+                </div>
+                <div class="col-12">
+                    <h2 class='gender-text'>Female</h2>
+                </div>
+              </div>
+        </div>
+      </div>
+    </section>
+    <section class="vertical-scrolling deep-sea-space-gradient">
+      <div class="vasu-section p-5">
+        <div class="row">
+            <div class="col-12">
+              <div class='container'>
+                <h2 class="landing-page-heading">Select Occasion:</h2>
+              </div>
+            </div>
+          </div>
+        
+          <!--<div class="row p-3">
+            <div class="m-1 card text-white roundedImage" >
+                <img class="card-img img-fluid img-thumbnail occasion-image" src="occasion-gym.jpg" alt="Card image">
+                <div class="card-img-overlay d-flex justify-content-center">
+                  <h3 class="card-title align-self-center occasion-text">WORKOUT</h3>
+                </div>
+            </div>
+            <div class="m-1 card  text-white roundedImage" >
+                <img class="card-img img-fluid img-thumbnail occasion-image" src="occasion-office.jpg" alt="Card image">
+                <div class="card-img-overlay d-flex justify-content-center">
+                  <h3 class="card-title align-self-center occasion-text">OFFICE</h3>
+                </div>
+            </div>
+            <div class="m-1 card  text-white roundedImage" >
+                <img class="card-img img-fluid img-thumbnail occasion-image" src="occasion-date.jpg" alt="Card image">
+                <div class="card-img-overlay d-flex justify-content-center">
+                  <h3 class="card-title align-self-center occasion-text">DATE</h3>
+                </div>
+            </div>
+            <div class="m-1 card  text-white roundedImage" >
+                <img class="card-img img-fluid img-thumbnail occasion-image" src="occasion-wedding.png" alt="Card image">
+                <div class="card-img-overlay d-flex justify-content-center">
+                  <h3 class="card-title align-self-center occasion-text">WEDDING</h3>
+                </div>
+            </div>
+            <div class="m-1 card  text-white roundedImage" >
+                <img class="card-img img-fluid img-thumbnail occasion-image" src="occasion-party.jpg" alt="Card image">
+                <div class="card-img-overlay d-flex justify-content-center">
+                  <h3 class="card-title align-self-center occasion-text">PARTY</h3>
+                </div>
+            </div>
+            <div class="m-1 card text-white roundedImage" >
+                <img class="card-img img-fluid img-thumbnail occasion-image" src="occasion-prom.jpg" alt="Card image">
+                <div class="card-img-overlay d-flex justify-content-center">
+                  <h3 class="card-title align-self-center occasion-text">PROM</h3>
+                </div>
+            </div>
+            <div class="m-1 card text-white roundedImage" >
+                <img class="card-img img-fluid img-thumbnail occasion-image" src="occasion-travel.jpg" alt="Card image">
+                <div class="card-img-overlay d-flex justify-content-center">
+                  <h3 class="card-title align-self-center occasion-text">TRAVEL</h3>
+                </div>
+            </div>
+          </div> -->
+        
+          
+          <div class="row p-3 justify-content-center align-items-center">
+              <div class="col-lg-3 col-md-3 col-sm-3 m-1 card text-white" >
+                <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-gym.jpg')}}" alt="Card image">
+                <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Sports")'>
+                  <h3 class="card-title align-self-center occasion-text">WORKOUT</h3>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3 m-1 card  text-white" >
+                  <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-office.jpg')}}" alt="Card image">
+                  <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Office")'>
+                    <h3 class="card-title align-self-center occasion-text">OFFICE</h3>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3 m-1 card  text-white" >
+                  <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-date.jpg')}}" alt="Card image">
+                  <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Dating")'>
+                    <h3 class="card-title align-self-center occasion-text">DATE</h3>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-md-3 col-sm-3 m-1 card  text-white" >
+                  <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-wedding.png')}}" alt="Card image">
+                  <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Wedding")'>
+                    <h3 class="card-title align-self-center occasion-text">WEDDING</h3>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3 m-1 card  text-white" >
+                  <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-party.jpg')}}" alt="Card image">
+                  <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Party")'>
+                    <h3 class="card-title align-self-center occasion-text">PARTY</h3>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3 m-1 card  text-white" >
+                  <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-prom.jpg')}}" alt="Card image">
+                  <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Prom")'>
+                    <h3 class="card-title align-self-center occasion-text">PROM</h3>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3 m-1 card  text-white" >
+                  <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-travel.jpg')}}" alt="Card image">
+                  <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Travel")'>
+                    <h3 class="card-title align-self-center occasion-text">TRAVEL</h3>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+    </section>
+    <section class="vertical-scrolling joomla-gradient">
+        <div class="vasu-section p-5">
+          <div class="row">
+            <div class="col-12">
+              <div class='container'>
+                <h2 class="landing-page-heading">Upload Photos:</h2>
+              </div>
+            </div>
+          </div>
+          <div class="container align-items-center" style="max-height: 80%; overflow-y: scroll;">
+            <div class="row p-5 justify-content-around" id="image-holders">
+            </div>
+            <div class="fluid-container p-5">
+              <form>
+                <div class="form-group">
+                  <input type="file" accept=".gif,.jpg,.jpeg,.png" id="file-holder" class="form-control-file" id="exampleFormControlFile1" style="background-color: #fff" multiple>
+                </div>
+                <button type="button" class="btn  btn-lg btn-success mb-2" id="upload-button">Upload</button>
+                <button type="button" class="btn  btn-lg btn-danger mb-2" id="skip-button">Skip</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </section>
+    <section class="vertical-scrolling">
+      <div id="before-submission">
+        <h2 id="finalResultStatus">Finally!</h2> 
+        <button type="button" id="get-predictions" class="btn btn-primary btn-lg p-4" style="font-size: 20px;">GET PREDICTIONS</button>
+      </div>
+      <div id="post-submission">
+
+      </div>
+    </section>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script  src="{{url_for('static', filename='jquery.fullPage.min.js')}}"></script>
+  <script>
+      // Code By Webdevtrick ( https://webdevtrick.com )
+    var $header_top = $('.header-top');
+    var $nav = $('nav');
+
+    $header_top.find('a').on('click', function() {
+      $(this).parent().toggleClass('open-menu');
+    });
+
+    $('#fullpage').fullpage({
+      //sectionsColor: ['#fff', '#348899', '#ff8b20', '#ff5757', '#ffd03c'],
+      sectionSelector: '.vertical-scrolling',
+      navigation: true,
+      slidesNavigation: true,
+      controlArrows: true,
+      anchors: ['firstSection', 'secondSection', 'thirdSection', 'fourthSection', 'fifthSection'],
+      menu: '#menu',
+
+      afterLoad: function(anchorLink, index) {
+        $header_top.css('background', 'rgba(0, 47, 77, .3)');
+        $nav.css('background', 'rgba(0, 47, 77, .25)');
+        if (index == 6) {
+            $('#fp-nav').hide();
+          }
+      },
+
+      onLeave: function(index, nextIndex, direction) {
+        if(index == 6) {
+          $('#fp-nav').show();
+        }
+      },
+
+    });
+
+
+    var fileHolder = document.getElementById("file-holder");
+    var fileList = [];
+    var counter = 0
+    var mainHolder = document.getElementById("image-holders")
+    fileHolder.addEventListener('change', function(evnt) {
+      for (var i = 0; i < fileHolder.files.length && fileList.length < 10; i++) {
+        //fileList.push(fileInput.files[i])
+        
+        let num = counter + 1;
+        counter += 1;
+        let reader = new FileReader()
+        
+        reader.addEventListener('load', (event) => {
+          const res = event.target.result
+          var image = new Image()
+          if (fileList.length < 10) {
+            //var holder = '<div class="col-md-2 col-sm-3 col-3 mt-3 ml-3"><button id="cross" data-number=' + '"' + num + '"' + '>X</button>'
+            var holder = '<div class="col mt-2 ml-2"><div class="d-flex flex-column align-items-center" id="cross" data-number=' + '"' + num + '"' + '><i class="fa fa-times" aria-hidden="true"></i></div>'
+            holder += ('<img src=' + event.target.result + ' data-number=' + '"' + num + '"' + ' style="max-width: 180px; max-height: 180px; width: 100%;" class="img-fluid rounded mx-auto d-block" /></div>')
+            mainHolder.innerHTML += holder
+            if (fileList.length < 10) fileList.push([num, event.target.result])
+            $('div#cross').click(function() {
+        
+              //console.log("VAU")//
+              let t = $(this).data('number')
+              console.log(t)
+              $(this).parent().remove()
+              for (var i = 0; i < fileList.length; i++) {
+                if (fileList[i][0] == t) {
+                  fileList.splice(i, 1)
+                }
+              }
+            })
+          }
+          
+          //console.log(holder)
+        })
+        reader.readAsDataURL(fileHolder.files[i])
+      }
+    })
+
+    // Important util functions
+    var gender = -1
+    var occasion = -1
+
+    var maleBtn = document.getElementById("male-gender")
+    var femaleBtn = document.getElementById("female-gender")
+
+    maleBtn.addEventListener('click', function() {
+      maleBtn.classList.add('img-glow')
+      femaleBtn.classList.remove('img-glow')
+      gender = "male"
+      window.location.href="#thirdSection"
+    })
+
+    femaleBtn.addEventListener('click', function() {
+      femaleBtn.classList.add('img-glow')
+      maleBtn.classList.remove('img-glow')
+      gender = "female"
+      window.location.href="#thirdSection"
+    })
+
+    function setOccasion(o) {
+      occasion = o
+      window.location.href="#fourthSection"
+    }
+
+    // Uploading and Checking Loop
+    
+    var isUploaded = false
+    var useFiles = false
+
+    var uploadBtn = document.getElementById("upload-button")
+    var skipBtn = document.getElementById("skip-button")
+    var submitBtn = document.getElementById("get-predictions")
+    var finalStatusText = document.getElementById("finalResultStatus")
+    var finalImageHolder = document.getElementById("post-submission")
+    var task_id = -1
+
+    uploadBtn.addEventListener('click', function() {
+      if (fileList.length < 10) {
+        alert("Less than 10 images, upload more!")
+      } else {
+        useFiles = true
+        window.location.href= "#fifthSection"
+      }
+    }) 
+
+    skipBtn.addEventListener('click', function() {
+      useFiles = false
+      window.location.href= "#fifthSection"
+    }) 
+
+    submitBtn.addEventListener('click', () => {
+      var formData = new FormData()
+      if (gender == -1) {
+          alert("Gender Not Selected!")
+          window.location.href="#secondSection"
+          return
+        }
+        if (occasion == -1) {
+          alert("Occasion not selected!")
+          window.location.href="#thirdSection"
+          return 
+        }
+        formData.append("gender", gender)
+        formData.append("occasion", occasion)
+      if (useFiles) {
+        console.log(fileList)
+        formData.append("use_files", true)
+        let uploadList = []
+        for (let ind= 0; ind < fileList.length; ind++) {
+          uploadList.push(fileList[ind][1])
+        }
+        formData.append('files', uploadList)
+        console.log(uploadList)
+      } else {
+        formData.append('files', [])
+        formData.append("use_files", false)
+      }
+      var request = new XMLHttpRequest()
+      request.open("POST", "/getPredictions")
+      request.send(formData)
+      submitBtn.classList.add('disabled')
+      submitBtn.disabled = true
+      finalStatusText.innerHTML = "FETCHING RESULT..."
+      request.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+            let resp = JSON.parse(request.response)
+            console.log(resp)
+            task_id = resp['job_id']
+
+            checkProgress()
+          }
+      };
+    })
+
+    var check_progress_timeout;
+    function checkListener() {
+      var data = this.responseText
+      console.log("Data", data)
+      check_progress_timeout = setTimeout(checkProgress, 2000)
+    }
+
+    function checkError(err) {
+      console.log('Fetch Error :-S', err);
+    }
+
+    function checkProgress() {
+      finalStatusText.innerHTML = "PROCESS QUEUED..."
+      var checkRequest = new XMLHttpRequest()
+      checkRequest.open('GET', '/status/' + task_id.toString())
+      checkRequest.send()
+      checkRequest.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+            let resp = JSON.parse(checkRequest.response)
+            console.log(resp)
+            if (resp['msg'] == '[started]') setTimeout(checkProgress, 2000)
+            else if (resp['msg'] == '[failed]') getFailure()
+            else getResult()
+          }
+      }
+    }
+
+    function getResult() {
+      var checkRequest = new XMLHttpRequest()
+      checkRequest.open('GET', '/result/' + task_id.toString())
+      checkRequest.send()
+      checkRequest.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+            let resp = JSON.parse(checkRequest.response)
+            finalStatusText.innerHTML = "Success! Try again!"
+            showSuccessImages(resp['short_result'])
+            submitBtn.disabled = false
+            submitBtn.classList.remove('disabled')
+          }
+      }
+    }
+
+    function getFailure() {
+      var checkRequest = new XMLHttpRequest()
+      checkRequest.open('GET', '/result/' + task_id.toString())
+      checkRequest.send()
+      checkRequest.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+            let resp = JSON.parse(checkRequest.response)
+            finalStatusText.innerHTML = "FAILED! Try again!"
+            submitBtn.disabled = false
+            submitBtn.classList.remove('disabled')
+          }
+      }
+    }
+
+    function showSuccessImages(imageNames) {
+      finalImageHolder.innerHTML = ""
+      let imageOptions = imageNames.split('|')
+      console.log(imageOptions)
+      for (imageOption in imageOptions) {
+        finalImageHolder.innerHTML += getImageTag(imageOptions[imageOption])  
+      }
+      //finalImageHolder
+    }
+
+    function getStarting() {
+      return `<img src="static/images/`
+    }
+
+    function getEnd() {
+      return '.jpg")}}" style="height: 200px; max-width: 100%"/>'
+    }
+
+    function getImageTag(imageName) {
+      console.log(imageName)
+      let ImageTag = getStarting() + imageName + getEnd() 
+      console.log(ImageTag)
+      return ImageTag
+    }
+
+  </script>
+
+</body>
+</html>
+<!--<div class="row p-3 justify-content-center align-items-center">
+        <div class="col-lg-3 col-md-3 col-sm-3 m-1 card text-white">
+          <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-gym.jpg')}}" alt="Card image">
+          <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Sports")'>
+            <h3 class="card-title align-self-center occasion-text">WORKOUT</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 m-1 card  text-white" >
+            <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-office.jpg')}}" alt="Card image">
+            <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Office")'>
+              <h3 class="card-title align-self-center occasion-text">OFFICE</h3>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 m-1 card  text-white" >
+            <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-date.jpg')}}" alt="Card image">
+            <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Dating")'>
+              <h3 class="card-title align-self-center occasion-text">DATE</h3>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-3 m-1 card  text-white" >
+            <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-wedding.png')}}" alt="Card image">
+            <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Wedding")'>
+              <h3 class="card-title align-self-center occasion-text">WEDDING</h3>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 m-1 card  text-white" >
+            <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-party.jpg')}}" alt="Card image">
+            <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Party")'>
+              <h3 class="card-title align-self-center occasion-text">PARTY</h3>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 m-1 card  text-white" >
+            <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-prom.jpg')}}" alt="Card image">
+            <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Prom")'>
+              <h3 class="card-title align-self-center occasion-text">PROM</h3>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 m-1 card  text-white" >
+            <img class="card-img img-fluid img-thumbnail occasion-image" src="{{url_for('static', filename='occasion-travel.jpg')}}" alt="Card image">
+            <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Travel")'>
+              <h3 class="card-title align-self-center occasion-text">TRAVEL</h3>
+            </div>
+        </div>
+    </div>-->

@@ -1,0 +1,213 @@
+/** Code By Webdevtrick ( https://webdevtrick.com ) **/
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,700);
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Quicksand&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Alegreya Sans', Arial, sans-serif;
+	text-transform: uppercase;
+}
+
+@media screen and (max-width: 767px) {
+	
+  .occasion-text {
+	font-size: 2rem;
+	text-emphasis: 2em;
+	font-weight: bold;
+	}
+}
+
+@media screen and (max-width: 400px) {
+  
+	.occasion-text {
+		font-size: 3rem;
+		text-emphasis: 2em;
+		font-weight: bold;
+	}
+	
+}
+
+.vasu-section {
+	max-height: 100vh;
+    height: 90%; 
+    width: 100%;
+	z-index: 3;
+}
+
+.landing-page-heading {
+    font-family: 'Varela Round', sans-serif;
+    color: #fff;
+	font-size: 6em;
+	text-align: center;
+}
+
+.landing-page-subheading {
+	text-transform: none;
+    font-family: 'Quicksand', sans-serif;
+    color: #eee;	
+	font-size: 3em;
+	text-align: center;
+}
+
+.gender-text {
+	text-transform: none;
+    font-family: 'Quicksand', sans-serif;
+    color: #eee;	
+    font-size: 4em;
+}
+
+.mild-gradient-background {
+    /*background: #67B26F;  /* fallback for old browsers */
+    background-image: url('abstract-background.svg'), -webkit-linear-gradient(to right, #6441a5, #2a0845) ;  /* Chrome 10-25, Safari 5.1-6 */
+    background-image: url('abstract-background.svg'), linear-gradient(to right, #6441a5, #2a0845); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-position: right; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: auto;
+}
+
+.frost-gradient {
+    background: #2a0845;  /* fallback for old browsers */
+    background-image: -webkit-linear-gradient(to right, #6441a5, #2a0845);  /* Chrome 10-25, Safari 5.1-6 */
+    background-image: linear-gradient(to right, #6441a5, #2a0845); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-position: right; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: auto;
+}
+
+.deep-sea-space-gradient {
+    background: #2C3E50;  /* fallback for old browsers */
+    background-image: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50), url('/abstract-background.svg');  /* Chrome 10-25, Safari 5.1-6 */
+    background-image: linear-gradient(to right, #4CA1AF, #2C3E50), url('/abstract-background.svg'); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.joomla-gradient {
+    background: #00d2ff;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.gender-img {
+	width:60%;
+	max-height:80%;
+}
+
+
+.occasion-image {
+	-webkit-filter: grayscale(50%);
+	filter: grayscale(50%);
+	max-height: 200px !important;
+}
+
+.card {
+	background: rgba(76, 175, 80, 0);
+	border: rgba(76, 175, 80, 0) solid 2px;
+}
+
+
+.occasion-text {
+	font-size: 3rem;
+	text-emphasis: 2em;
+	font-weight: bold;
+}
+
+.rounded-image {
+	border-radius: 50%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+	.roundedImage {
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	}
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+	.roundedImage {
+		
+		border-radius: 50%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	}
+  }
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+	.roundedImage {
+		width: 190px;
+		height: 190px;
+		border-radius: 50%;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+  } 
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+	.roundedImage {
+		width: 220px;
+		height: 220px;
+		border-radius: 50%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	}
+  } 
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+	.roundedImage {
+		width: 280px;
+		height: 280px;
+		border-radius: 50%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	}
+  }
+
+.image-preview {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: solid #ddd 2px;
+	color: #ddd;
+}
+
+#cross {
+	position: absolute;
+	background: black;
+	color: white;
+	top: -10px;
+	right: -10px;
+	height: 12px;
+	width: 12px;
+	font-size: 10px;
+	text-align: center;
+	border-radius: 50%;
+}
+
+.img-glow {
+	-moz-box-shadow: 0 0 5px #fff;
+	-webkit-box-shadow: 5px 5px 5px #fff;
+	box-shadow: 5px 5px 5px #fff;
+}

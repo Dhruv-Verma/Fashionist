@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<!--Code By Webdevtrick ( https://webdevtrick.com )-->
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>F A S H I O N I S T - Artifical Intelligence Based Cloth Recommendation System</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> 
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='jquery.pagepiling.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='loader.css')}}">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <style>
+    /** Code By Webdevtrick ( https://webdevtrick.com ) **/
+    @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,700);
+    @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Quicksand&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Raleway', sans-serif;
+      text-transform: none;
+    }
+
+    @media screen and (max-width: 767px) {
+      
+      .occasion-text {
+      font-size: 2rem;
+      text-emphasis: 2em;
+      font-weight: bold;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      
+      .occasion-text {
+        font-size: 3rem;
+        text-emphasis: 2em;
+        font-weight: bold;
+      }
+      
+    }
+
+    .vasu-section {
+      max-height: 100vh;
+      height: 90%; 
+      width: 100%;
+      z-index: 3;
+    }
+
+    .landing-page-heading {
+        color: #fff;
+        font-size: 3.3em;
+        text-align: center;
+    }
+
+    .landing-page-subheading {
+      text-transform: none;
+        font-family: 'Quicksand', sans-serif;
+        color: #eee;	
+      font-size: 2em;
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+      text-shadow: 0 5px 10px rgba(0,0,0,0);
+    }
+
+
+    .gender-text {
+      text-transform: none;
+        font-family: 'Quicksand', sans-serif;
+        color: #eee;	
+        font-size: 4em;
+    }
+
+    .mild-gradient-background {
+        /*background: #67B26F;  /* fallback for old browsers */
+        background-image: -webkit-linear-gradient(to right, #4B4443, #A19B9A) ;  /* Chrome 10-25, Safari 5.1-6 */
+        background-image: linear-gradient(to right, #4B4443, #A19B9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background-position: right; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: auto;
+    }
+
+    .scandinavia-bg {
+      background: #fff;
+      background-image: url("./static/background.svg");  /* Chrome 10-25, Safari 5.1-6 */
+      background-image: url("./static/background.svg");
+      background-repeat: repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .frost-gradient {
+        background: #2a0845;  /* fallback for old browsers */
+        background-image: -webkit-linear-gradient(to right, #6441a5, #2a0845);  /* Chrome 10-25, Safari 5.1-6 */
+        background-image: linear-gradient(to right, #6441a5, #2a0845); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background-position: right; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: auto;
+    }
+
+    .frost-gradient-2 {
+        background: #90ACB8;  /* fallback for old browsers */
+        background-image: -webkit-linear-gradient(to right, #6441a5, #938fd1);  /* Chrome 10-25, Safari 5.1-6 */
+        background-image: linear-gradient(to right, #6441a5, #90ACB8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background-position: right; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: auto;
+    }
+
+
+    
+
+    .gender-img {
+      width:250px;
+      height: 250px;
+
+    }
+
+
+    .occasion-image {
+      -webkit-filter: grayscale(60%) blur(10px);
+      filter: grayscale(60%) blur(10px) ;
+      max-height: 200px !important;
+    }
+
+    .card {
+      background: rgba(76, 175, 80, 0);
+      border: rgba(76, 175, 80, 0) solid 2px;
+    }
+
+
+    .occasion-text {
+      font-size: 2.5rem;
+      text-emphasis: 2em;
+      font-weight: bold;
+    }
+
+    .rounded-image {
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    
+    .uploaded-image {
+      max-height: 100%;
+    }
+    
+    .upload-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 220px);
+      justify-content: center;
+      align-items: center;
+      grid-row-gap: 20px;
+      grid-column-gap: 20px;
+    }
+
+    .upload-grid div.uploaded-image-outer {
+      width: 220px;
+      height: 220px;
+      background-color: #fff;
+      display: inline-block;
+      position: relative;
+    }
+
+    .remove-element {
+      display: none !important;
+    }
+
+
+    @media only screen and (max-width: 600px) {
+        .roundedImage {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          }
+    }
+
+    #heightOfUploader {
+      height: 500px;
+    }
+      
+      /* Small devices (portrait tablets and large phones, 600px and up) */
+      @media only screen and (min-width: 600px) {
+        .roundedImage {
+          
+          border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+      }
+      
+      /* Medium devices (landscape tablets, 768px and up) */
+      @media only screen and (min-width: 768px) {
+        .roundedImage {
+          width: 190px;
+          height: 190px;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+
+        .gender-img {
+          width:300px;
+          height: 300px;
+        }
+      } 
+      
+      /* Large devices (laptops/desktops, 992px and up) */
+      @media only screen and (min-width: 992px) {
+        .roundedImage {
+          width: 250px;
+          height: 250px;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .gender-img {
+          width: 400px;
+          height: 400px;
+        }
+
+        .uploaded-image {
+          max-height: 100%;
+        }
+
+        #heightOfUploader {
+          height: 500px;
+        }
+        
+        .upload-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 220px);
+          justify-content: center;
+          align-items: center;
+          grid-row-gap: 20px;
+          grid-column-gap: 20px;
+        }
+
+        .upload-grid div.uploaded-image-outer {
+          width: 220px;
+          height: 220px;
+        }
+      } 
+
+      .output-images {
+        max-width: 220px; 
+        max-height: 220px
+      }
+      
+      /* Extra large devices (large laptops and desktops, 1200px and up) */
+      @media only screen and (min-width: 1200px) {
+        .roundedImage {
+          width: 280px;
+          height: 280px;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      .final-image-holder {
+      max-height: 220px;
+      height: 220px;
+      position: relative;
+      animation-duration: 2s; /* don't forget to set a duration! */
+    }
+
+      @media only screen and (min-width: 1800px) {
+        .roundedImage {
+          width: 280px;
+          height: 280px;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        
+        #heightOfUploader {
+          height: 700px;
+        }
+
+        .output-images {
+          max-width: 340px; 
+          max-height: 340px
+        }
+
+        .uploaded-image {
+          max-height: 100%;
+        }
+        
+        .upload-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 340px);
+          justify-content: center;
+          align-items: center;
+        }
+
+        .upload-grid div.uploaded-image-outer {
+          width: 340px;
+          height: 340px;
+        }
+
+        .final-image-holder {
+          max-height: 340px;
+          height: 340px;
+          position: relative;
+        }
+
+      }
+
+      @media only screen and (min-width: 1900px) {
+        .roundedImage {
+          width: 280px;
+          height: 280px;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        
+        #heightOfUploader {
+          height: 700px;
+        }
+
+        .output-images {
+          max-width: 350px; 
+          max-height: 350px
+        }
+
+        .uploaded-image {
+          max-height: 100%;
+        }
+        
+        .upload-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 350px);
+          justify-content: center;
+          align-items: center;
+        }
+
+        .upload-grid div.uploaded-image-outer {
+          width: 350px;
+          height: 350px;
+        }
+
+        .final-image-holder {
+          max-height: 350px;
+          height: 350px;
+          position: relative;
+        }
+
+      }
+
+    .image-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: solid #ddd 2px;
+      color: #ddd;
+    }
+
+
+    .img-glow {
+      -moz-box-shadow: 0 0 5px #fff;
+      -webkit-box-shadow: 5px 5px 5px #fff;
+      box-shadow: 0px 0px 10px #fff;
+    }
+
+    #pp-nav li .active span, .pp-slidesNav .active span {
+      background-color: #fff;
+    }
+
+    .circle-images {
+      overflow: hidden;
+      height: 250px;
+      width: 250px;
+      border-radius: 125px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.8);
+      border: #333 solid 2px;
+    }
+
+    .circle-images:hover {
+      box-shadow: 0px 10px 20px rgba(0,0,0,0.8);
+      border: #fff solid 2px;
+    }
+
+    .img-3d-shadow {
+      box-shadow: 0px 5px 10px rgba(0,0,0,0.6);
+    }
+
+    .img-3d-shadow-max {
+      box-shadow: 0px 15px 15px rgba(0,0,0,0.7);
+    }
+
+    .selected-occasion {
+      border: #fff solid 4px;
+      box-shadow: 0px 10px 20px rgba(255,255,255,0.5);
+    }
+
+    #cross {
+      background-color: Transparent;
+      background-repeat:no-repeat;
+      cursor:pointer;
+      position: absolute;
+      color: white;
+      top: -7.5px;
+      right: -7.5px;
+      height: 15px;
+      width: 15px;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    
+
+    #lightbox {
+      /** Default lightbox to hidden */
+      display: none;
+
+      /** Position and style */
+      position: fixed;
+      z-index: 999;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      top: 0;
+      left: 0;
+      background: rgba(0,0,0,0.8);
+    }
+
+    #lightbox.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      padding: 4px;
+      background-color: black;
+      border: 2px solid white;
+    }
+
+    .from-server {
+      cursor: pointer;
+      background-color: #FFF;
+    }
+
+    .uploaded-image-holder {
+      /*float:right;*/
+      display: inline-block;
+      height: 100%;
+      position: relative;
+    }
+
+    
+
+    .uploadButton {
+      border: 2px #484849 solid;
+      height: 90px;
+      width: 90px;
+      text-align: center;
+      border-radius: 45px;
+      cursor: pointer;
+    }
+  
+    .bounce {
+	-moz-animation: bounce 3s infinite;
+	-webkit-animation: bounce 3s infinite;
+	animation: bounce 3s infinite;
+}
+@-moz-keyframes bounce {
+  0%, 20%, 80%, 100% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -moz-transform: translateY(15px);
+    transform: translateY(15px);
+  }
+}
+@-webkit-keyframes bounce {
+  0%, 20%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -webkit-transform: translateY(15px);
+    transform: translateY(15px);
+  }
+}
+@keyframes bounce {
+  0%, 20%, 80%, 100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -moz-transform: translateY(15px);
+    -ms-transform: translateY(15px);
+    -webkit-transform: translateY(15px);
+    transform: translateY(15px);
+  }
+}
+
+.question-mark-helper {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  height: 40px;
+  width: 40px;
+  z-index: 1000;
+}
+
+.custom-tooltip {
+    display:inline-block;
+    
+    text-align:left;
+}
+
+.custom-tooltip h3 {margin:12px 0;}
+
+.custom-tooltip .left {
+    min-width:200px;
+    max-width:400px;
+    top:50%;
+    right:100%;
+    margin-right:20px;
+    transform:translate(0, -50%);
+    padding:20px;
+    color:#666666;
+    background-color:#FFFFE0;
+    font-weight:normal;
+    font-size:13px;
+    border-radius:8px;
+    position:absolute;
+    z-index:99999999;
+    box-sizing:border-box;
+    display:none;
+    border:1px solid #DCA;
+}
+
+.custom-tooltip:hover .left {
+    display:block;
+}
+
+.custom-tooltip .left i {
+    position:absolute;
+    top:50%;
+    left:100%;
+    margin-top:-12px;
+    width:12px;
+    height:24px;
+    overflow:hidden;
+}
+
+/*
+.custom-switch {
+  padding-left: 2.25rem;
+  padding-bottom: 1rem; 
+}
+
+.custom-control-label {
+  padding-top: 0.5rem;
+  padding-left: 2rem;
+  padding-bottom: 0.1rem;
+}
+
+.custom-switch .custom-control-label::before {
+  left: -2.25rem;
+  height: 2rem;
+  width: 3.5rem;   
+  pointer-events: all;
+  border-radius: 1rem;
+}
+
+.custom-switch .custom-control-label::after {
+  top: calc(0.25rem + 2px);
+  left: calc(-2.25rem + 2px);
+  height: calc(2rem - 4px);  
+  width: calc(2rem - 4px);   
+  background-color: #adb5bd;
+  border-radius: 2rem; 
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+}
+
+.reset-everything:hover {
+  background-color: #000;
+  color: #000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-switch .custom-control-label::after {
+    transition: none;
+  }
+}
+
+.custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+  background-color: #000;
+  -webkit-transform: translateX(1.5rem);
+  transform: translateX(1.5rem);
+} */
+
+.checkbox {
+  position: relative;
+  display: inline-block;
+}
+.checkbox:after, .checkbox:before {
+  font-family: FontAwesome;
+  font-feature-settings: normal;
+  -webkit-font-kerning: auto;
+          font-kerning: auto;
+  font-language-override: normal;
+  font-stretch: normal;
+  font-style: normal;
+  font-synthesis: weight style;
+  font-variant: normal;
+  font-weight: normal;
+  text-rendering: auto;
+}
+.checkbox label {
+  width: 90px;
+  height: 42px;
+  background: #ccc;
+  position: relative;
+  display: inline-block;
+  border-radius: 46px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.checkbox label:after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  left: 0;
+  top: -5px;
+  z-index: 2;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.checkbox input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkbox input:hover + label:after {
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.15);
+}
+.checkbox input:checked + label:after {
+  left: 40px;
+}
+
+.border-mid:after {
+  content: '';
+  height: 80%; 
+  width: 1.5px;
+
+  position: absolute;
+  right: 0;
+  top: 5%; 
+
+  background-color: #fff; 
+}
+
+
+.model-5 .checkbox label {
+  background: #bbb;
+  height: 15px;
+  width: 70px;
+}
+.model-5 .checkbox label:after {
+  background: #fff;
+  top: -7.5px;
+  width: 30px;
+  height: 30px;
+}
+.model-5 .checkbox input:hover + label:after {
+  -webkit-transform: scale(1.4, 1.4);
+  transform: scale(1.4, 1.4);
+}
+.model-5 .checkbox input:checked + label {
+  background: #FBB95B;
+}
+.model-5 .checkbox input:checked + label:after {
+  background: #FBB95B;
+  left: 45px;
+}
+
+.br { 
+      display: block; 
+      margin-bottom: 0em; 
+  }
+
+
+  </style>
+</head>
+<body>
+  <div id="pagepiling">
+    <div class="section scandinavia-bg" style="text-align: center;">
+      <div class="d-inline-flex flex-column align-items-center img-3d-shadow-max p-3" style="background-color: #fff; border-radius: 2px;"> 
+        <div class="d-inline-flex flex-column align-items-center" style="width: 100%; border:2.5px #484849 solid; border-radius: 2px; padding-left: 60px; padding-right: 60px; padding-top: 30px; padding-bottom: 30px;">
+          <div class="d-flex flex-column align-items-center justify-content-center">
+              <!--<h1 class="landing-page-heading" style="color: #484849; font-family: 'Playfair Display', serif;">
+                F&nbsp;&nbsp;A&nbsp;&nbsp;S&nbsp;&nbsp;H&nbsp;&nbsp;I&nbsp;&nbsp;O&nbsp;&nbsp;N&nbsp;&nbsp;I&nbsp;&nbsp;S&nbsp;&nbsp;T
+              </h1>-->
+              <div class="landing-page-heading" style="color: #484849; font-size: 5rem; font-family: 'Raleway', sans-serif;">
+                Fashionist
+              </div>     
+              <hr style="width: 70%; border: solid 1.5px #484849; background-color: #484849; border-radius: 0.75px; transform: translate(0, -15px)">
+              <a href="#secondSection" class="mt-2"><i class="fa fa-angle-down bounce" aria-hidden="true" style="color: #484849; font-size: 35px;"></i></a>
+            </div>
+          <div>
+              <!--<a href="#secondSection"><button type="button" class="btn pl-3 pr-3" style="background-color: rgb(238, 135, 0); color: #000">START</button></a>-->
+              
+            </div>
+        </div>
+        
+    </div>
+    </div>
+    <div class="section">
+    <div class="custom-tooltip question-mark-helper">
+      <i class="fa fa-question-circle" aria-hidden="true" style="font-size: 40px;"></i>
+      <div class="left">
+          <h3>Lorem Ipsum</h3>
+          <ul>
+              <li>Aliquam ac odio ut est aliquet tempor vitae sed arcu</li>
+              <li>Cras porttitor orci ac porta gravida</li>
+          </ul>
+          <i></i>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-12 mb-3 p-5">
+          <div class='container'>
+            <h2 class="landing-page-heading"><span style="color: #F2F2F2; font-size: 5rem">Select</span>&nbsp;&nbsp;<span style="color: #FBB95B; font-size: 5rem">Gender</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 border-mid">
+          <div class="row">
+            <div class="col-12">
+                <div class="d-flex flex-column align-items-center">
+                  <img src="{{url_for('static', filename='man_icon.svg')}}" id="male-gender" class="gender-img" />
+                </div>
+            </div>
+            <div class="col-12">
+                <h2 class='gender-text'></h2>
+            </div>
+          </div>
+        </div>
+        <div  class="col-6">
+            <div class="row">
+              <div class="col-12">
+                  <div class="d-flex flex-column align-items-center">
+                    <img src="{{url_for('static', filename='woman_icon.svg')}}" id="female-gender" class="gender-img" />
+                  </div>
+              </div>
+              <div class="col-12">
+                  <h2 class='gender-text'></h2>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="custom-tooltip question-mark-helper">
+        <i class="fa fa-question-circle" aria-hidden="true" style="font-size: 40px;"></i>
+        <div class="left">
+            <h3>Help</h3>
+            <h3>Help</h3>
+            <h3>Help</h3>
+            <ul>
+                <li>Upload outfit images representing your fashion taste to get <b>personalised recommendations</b></li>
+                <li>You can switch the personalisation ON/OFF by using the toggle</li>
+            </ul>
+            <i></i>
+        </div>
+      </div>
+      <div style="height: 100%; flex-direction: column;" class="d-flex flex-column justify-content-center" >
+        <div class="align-items-center">
+            <div class="row p-1">
+              <div class="col-12">
+                <div class='container' style="text-align: center;">
+                  <div class="landing-page-heading" style="color: #6B6463;">
+                    <div class="d-flex flex-column justify-content-center">
+                      <div class="d-flex flex-row align-items-center justify-content-center">
+                        <div class="d-flex" style="font-size: 5rem; color: #FBB95B">
+                          Visual
+                        </div>
+                        <div class="d-flex flex-column p-3 ml-2">
+                       <span style="font-size: 1.8rem; margin-bottom: 0px;" class="align-self-start">Preference</span>
+                          <span style="font-size: 1.8rem" class="align-self-start">Modelling</span>
+                        </div>
+                        <div class="d-flex ml-5">
+                          <div class="model-5">
+                            <div class="checkbox">
+                              <input type="checkbox" id="customSwitch1" checked/>
+                              <label></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                    <!--<div class="custom-control custom-switch">
+                      <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                      <label class="custom-control-label" for="customSwitch1"></label>
+                    </div>-->  
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class=" d-flex flex-column align-items-center" id="heightOfUploader">
+          <div class='upload-grid' id="image-holders"></div>
+        </div>
+              <!--<div class="uploaded-image-outer d-flex align-items-center justify-content-center" id="upload-button-picker" style="text-align:center"><div class="uploadButton d-flex align-items-center justify-content-center img-3d-shadow"><i class="fa fa-upload align-self-center justify-self-center" aria-hidden="true" style="color: #6B6463; font-size: 40px;"></i></div></div> -->
+        <div class="container d-flex flex-column align-items-center align-self-end">
+          <!--<div class="d-flex flex-row align-items-center justify-content-center flex-wrap" id="image-holders"> -->
+          
+          <div class="d-flex flex-column p-1 mb-4" style="text-align: center;">
+            <form>
+              <div class="form-group">
+                <input type="file" accept=".gif,.jpg,.jpeg,.png" id="file-holder" class="form-control-file d-none" id="exampleFormControlFile1" style="background-color: #fff" multiple>
+              </div>  
+              <div class="d-flex flex-row justify-content-center align-self-center" id="button-group">
+                <button type="button" class="btn m-1 img-3d-shadow-max" id="upload-button-picker" onclick="triggerFileInput()" style="background-color: #f2f2f2; border: 2px #888 solid; border-radius: 10px;">Upload</button>
+                <button type="button" class="btn btn-danger m-1 img-3d-shadow-max" id="skip-button" style="background-color: #FBB95B; border: 2px #8d5507 solid; border-radius: 10px;">Clear Images</button>
+                <button type="button" class="btn btn-danger m-1 img-3d-shadow-max" id="upload-button" style=" border: 2px rgb(87, 6, 6) solid; border-radius: 10px;">Finalize Images</button>
+                <!--<button type="button" class="btn btn-success" id="clear-button">Skip Without Personalizing</button>--->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="row">
+        <div class="col-12">
+          <div class='container'>
+            <h2 class="landing-page-heading"><span style="color: #FFF; font-size: 5rem">Select</span>&nbsp;&nbsp;<span style="color: #00054b; font-size: 5rem">Occasion</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="custom-tooltip question-mark-helper">
+        <i class="fa fa-question-circle" aria-hidden="true" style="font-size: 40px;"></i>
+        <div class="left">
+            <h3>Lorem Ipsum</h3>
+            <ul>
+                <li>Aliquam ac odio ut est aliquet tempor vitae sed arcu</li>
+                <li>Cras porttitor orci ac porta gravida</li>
+            </ul>
+            <i></i>
+        </div>
+      </div>
+    <div class="d-flex flex-row align-items-center justify-content-center flex-wrap">
+      <div class="circle-images m-4 text-white d-flex flex-column align-items-center card" data-occasion="Travel">
+        <img class="card-img" src="{{url_for('static', filename='occasion-travel.jpg')}}" alt="Card image" style="min-height: 250px; min-width: 250px; width: 120%; height: auto;">
+        <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Travel")'>
+          <h3 class="card-title align-self-center occasion-text">Travel</h3>
+        </div>
+      </div>
+      <div class="circle-images m-4 text-white d-flex flex-column align-items-center card" data-occasion="Prom">
+        <img class="card-img"  src="{{url_for('static', filename='occasion-prom.jpg')}}" alt="Card image" style="min-height: 250px; min-width: 250px; width: 120%; height: auto;">
+        <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Prom")'>
+          <h3 class="card-title align-self-center occasion-text">Prom</h3>
+        </div>
+      </div>
+      <div class="circle-images m-4 text-white d-flex flex-column align-items-center card" data-occasion="Party">
+        <img class="card-img" src="{{url_for('static', filename='occasion-party.jpg')}}" alt="Card image" style="min-height: 250px; min-width: 250px; width: 120%; height: auto;">
+        <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Party")'>
+          <h3 class="card-title align-self-center occasion-text">Party</h3>
+        </div>
+      </div>
+      <div class="circle-images m-4 text-white d-flex flex-column align-items-center card" data-occasion="Wedding">
+        <img class="card-img" src="{{url_for('static', filename='occasion-wedding.png')}}" alt="Card image" style="min-height: 250px; min-width: 250px; width: 100%; height: auto;">
+        <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Wedding")'>
+          <h3 class="card-title align-self-center occasion-text">Wedding</h3>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-row align-items-center justify-content-center flex-wrap">
+      <div class="circle-images m-4 text-white d-flex flex-column align-items-center card" data-occasion="Office">
+        <img class="card-img" src="{{url_for('static', filename='occasion-office.jpg')}}" alt="Card image" style="min-height: 250px; min-width: 250px; width: 100%; height: auto;">
+        <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Office")'>
+          <h3 class="card-title align-self-center occasion-text">Office</h3>
+        </div>
+      </div>
+      <div class="circle-images m-4 text-white d-flex flex-column align-items-center card" data-occasion="Dating">
+        <img class="card-img" src="{{url_for('static', filename='occasion-date.jpg')}}" alt="Card image" style="min-height: 250px; min-width: 100%;">
+        <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Dating")'>
+          <h3 class="card-title align-self-center occasion-text">Dating</h3>
+        </div>
+      </div>
+      <div class="circle-images m-4 text-white d-flex flex-column align-items-center card" data-occasion="Sports">
+        <img class="card-img" src="{{url_for('static', filename='occasion-gym.jpg')}}" alt="Card image" style="min-height: 250px; min-width: 250px; width: 100%; height: auto;">
+        <div class="card-img-overlay d-flex justify-content-center" onclick='setOccasion("Sports")'>
+          <h3 class="card-title align-self-center occasion-text">Workout</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="section">
+      
+      <div style="height: 100%" class="d-flex align-items-center justify-content-center flex-wrap">
+        <div class="custom-tooltip question-mark-helper remove-element">
+          <i class="fa fa-question-circle" aria-hidden="true" style="font-size: 40px;"></i>
+          <div class="left">
+              <h3>Lorem Ipsum</h3>
+              <ul>
+                  <li>Aliquam ac odio ut est aliquet tempor vitae sed arcu</li>
+                  <li>Cras porttitor orci ac porta gravida</li>
+              </ul>
+              <i></i>
+          </div>
+        </div>
+        
+        <div class="d-flex flex-column align-items-center">
+          <div class="row p-2 remove-element" id="success-remove">
+            <div class="col-12">
+              <div class='container' style="text-align: center;">
+                <div class="lds-default" id="loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                <h2 id="finalResultStatus" style="color: #000">Processing...</h2>
+              </div>
+            </div>
+          </div>
+          <div id="before-submission">
+            <button type="button" id="get-predictions" class="btn btn-danger btn-lg p-3" style="font-size: 20px; border-radius: 40px;">GET RECOMMENDATIONS</button>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div  style="height: 60px; width: 60px; border-radius: 30px;  position: absolute; bottom: 40px; right: 40px;" class="d-flex align-items-center justify-content-center img-3d-shadow reset-everything remove-element">
+        <i class="fa fa-undo" aria-hidden="true" style="font-size: 30px;"></i>
+      </div>
+      <div class="column">
+        <div class="d-flex flex-column align-items-center p-2">
+          <div class="d-flex justify-content-between" style="width: 95%;">
+            <h2 class="landing-page-heading align-self-start" style="color: #FBB95B; font-size: 5rem; font-family: 'Raleway', sans-serif;">Results</h2>
+            <span class="remove-element" id="reset-whole"><i class="fa fa-undo"  aria-hidden="true" style="font-size: 5rem"></i></span>
+          </div>
+          <div id="post-submission" class="upload-grid p-2" style="min-height: 500px;">
+        </div>
+      </div>
+      
+      </div> 
+    </div>
+  </div>
+  <div id="lightbox">
+
+  </div>
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+  <script src="{{url_for('static', filename='jquery.pagepiling.js')}}"></script>
+  <script>
+    $(document).ready(function() {
+        $('#pagepiling').pagepiling({
+          sectionsColor: ['#fff', '#6B6463',  '#fff', '#B0CCD8', '#FBB95B', '#fff'],
+          navigation: {
+            'textColor': '#fff',
+            'bulletsColor': '#222',
+            'position': 'right',
+            'tooltips': ['Home', 'Select Gender',  'Upload Photos', 'Select Occasion','Get Recommendation', 'Final Result']
+          },
+          anchors: ['firstSection', 'secondSection', 'thirdSection', 'fourthSection', 'fifthSection', 'sixthSection'],
+        });
+    });
+
+    var uploadButton = document.getElementById("upload-button-picker")
+    
+    var fileHolder = document.getElementById("file-holder");
+    var fileList = [];
+    var counter = 0
+    var mainHolder = document.getElementById("image-holders")
+    
+    function triggerFileInput() {
+      if (fileList.length == 10) {
+        alert("Can only upload 10 images.")
+        return 
+      }
+      fileHolder.click()
+    }
+
+
+    fileHolder.addEventListener('change', function(evnt) {
+      for (var i = 0; i < fileHolder.files.length && fileList.length < 10; i++) {
+        //fileList.push(fileInput.files[i])
+        
+        let num = counter + 1;
+        counter += 1;
+        let reader = new FileReader()
+        
+        reader.addEventListener('load', (event) => {
+          const res = event.target.result
+          var image = new Image()
+          if (fileList.length < 10) {
+            //var holder = '<div class="col-md-2 col-sm-3 col-3 mt-3 ml-3"><button id="cross" data-number=' + '"' + num + '"' + '>X</button>'
+            var holder = '<div class="uploaded-image-outer img-3d-shadow" style="text-align:center; border-radius: 10px;"><div class="d-inline-flex flex-column align-items-center" id="cross" data-number=' + '"' + num + '"' + '><i class="fa fa-times-circle" aria-hidden="true" style="color: #6b6463"></i></div><div class="uploaded-image-holder">'
+            holder += ('<img src=' + event.target.result + ' data-number=' + '"' + num + '"' + ' style="max-width: 100%; max-height: 100%" class="img-fluid mx-auto d-block uploaded-image"/></div></div>')
+            mainHolder.innerHTML = holder + mainHolder.innerHTML
+            if (fileList.length < 10) {
+              fileList.push([num, event.target.result])
+              document.getElementById("upload-button-picker").classList.remove('remove-element')
+            }
+            if (fileList.length >= 10) {
+              console.log("VASU!")
+              document.getElementById("upload-button-picker").classList.add('remove-element')
+            }
+            $('div#cross').click(function() { 
+              //console.log("VAU")//
+              let t = $(this).data('number')
+              console.log(t)
+              $(this).parent().remove()
+              for (var i = 0; i < fileList.length; i++) {
+                if (fileList[i][0] == t) {
+                  fileList.splice(i, 1)
+                }
+              }
+              document.getElementById("upload-button-picker").classList.remove('remove-element')
+            })
+          }
+          
+          //console.log(holder)
+        })
+        reader.readAsDataURL(fileHolder.files[i])
+      }
+    })
+
+    // Important util functions
+    var gender = -1
+    var occasion = -1
+
+    var maleBtn = document.getElementById("male-gender")
+    var femaleBtn = document.getElementById("female-gender")
+
+    maleBtn.addEventListener('click', function() {
+      maleBtn.classList.add('img-glow')
+      femaleBtn.classList.remove('img-glow')
+      gender = "male"
+      window.location.href="#thirdSection"
+    })
+
+    femaleBtn.addEventListener('click', function() {
+      femaleBtn.classList.add('img-glow')
+      maleBtn.classList.remove('img-glow')
+      gender = "female"
+      window.location.href="#thirdSection"
+    })
+
+    var occasionImages = document.querySelectorAll('[data-occasion]');
+
+    function setOccasion(o) {
+      occasion = o
+      window.location.href="#fifthSection"
+      for (let i = 0; i < occasionImages.length; i++) {
+        occasionImages[i].classList.remove('selected-occasion')
+      }
+      document.querySelector(`[data-occasion=${o}`).classList.add('selected-occasion')
+    }
+    // Uploading and Checking Loop
+
+    var isUploaded = false
+    var useFiles = false
+
+    var clearButton = document.getElementById("skip-button")
+    var uploadBtn = document.getElementById("upload-button")
+    var skipBtn = document.getElementById("customSwitch1")
+    var submitBtn = document.getElementById("get-predictions")
+    var finalStatusText = document.getElementById("finalResultStatus")
+    var finalImageHolder = document.getElementById("post-submission")
+    var task_id = -1
+    var resetButton = document.getElementById("reset-whole")
+    var loaderAnim = document.getElementById("loader")
+
+    uploadBtn.addEventListener('click', function() {
+      if (fileList.length < 10) {
+        alert("Less than 10 images, upload more!")
+      } else {
+        useFiles = true
+        window.location.href= "#fourthSection"
+      }
+    }) 
+
+    skipBtn.addEventListener('click', function() {
+      if (skipBtn.checked == true) {
+        $('#button-group button').removeAttr('disabled');
+        useFiles = true;
+      }
+      else {
+        $('#button-group button').attr('disabled','disabled');
+        useFiles = false;
+        window.location.href= "#fourthSection"
+      }
+    }) 
+
+    clearButton.addEventListener('click', function() {
+      fileList = []
+      while(mainHolder.childElementCount > 0) {
+        mainHolder.removeChild(mainHolder.firstChild)
+      }
+      document.getElementById("upload-button-picker").classList.remove('remove-element')
+    })
+
+    submitBtn.addEventListener('click', () => {
+      var formData = new FormData()
+      if (gender == -1) {
+          alert("Gender Not Selected!")
+          window.location.href="#secondSection"
+          return
+        }
+        if (occasion == -1) {
+          alert("Occasion not selected!")
+          window.location.href="#fourthSection"
+          return 
+        }
+        formData.append("gender", gender)
+        formData.append("occasion", occasion)
+      if (skipBtn.checked) {
+        console.log(fileList)
+        if (fileList.length < 10) {
+          alert("Not enough images uploaded!")
+          window.location.href="#thirdSection"
+          return 
+        }
+        formData.append("use_files", true)
+        let uploadList = []
+        for (let ind= 0; ind < fileList.length; ind++) {
+          uploadList.push(fileList[ind][1])
+        }
+        formData.append('files', uploadList)
+        console.log(uploadList)
+      } else {
+        formData.append('files', [])
+        formData.append("use_files", false)
+      }
+      var request = new XMLHttpRequest()
+      request.open("POST", "/getPredictions")
+      request.send(formData)
+      submitBtn.classList.add('disabled')
+      submitBtn.classList.add('remove-element')
+      submitBtn.disabled = true
+      finalStatusText.innerHTML = "Fetching Result..."
+      document.getElementById('success-remove').classList.remove('remove-element')
+      request.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+            let resp = JSON.parse(request.response)
+            console.log(resp)
+            task_id = resp['job_id']
+            document.getElementById('success-remove').classList.remove('remove-element')
+            checkProgress()
+          }
+      };
+    })
+
+
+    var check_progress_timeout;
+    function checkListener() {
+      var data = this.responseText
+      console.log("Data", data)
+      check_progress_timeout = setTimeout(checkProgress, 2000)
+    }
+
+    function checkError(err) {
+      console.log('Fetch Error :-S', err);
+    }
+
+    function checkProgress() {
+      finalStatusText.innerHTML = "Processing..."
+      var checkRequest = new XMLHttpRequest()
+      checkRequest.open('GET', '/status/' + task_id.toString())
+      checkRequest.send()
+      checkRequest.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+            let resp = JSON.parse(checkRequest.response)
+            console.log(resp)
+            if (resp['msg'] == '[started]') setTimeout(checkProgress, 2000)
+            else if (resp['msg'] == '[failed]') getFailure()
+            else if (resp['msg'] == '[completed]') getResult()
+            else setTimeout(checkProgress, 2000)
+          }
+      }
+    }
+
+    function getResult() {
+      var checkRequest = new XMLHttpRequest()
+      checkRequest.open('GET', '/result/' + task_id.toString())
+      checkRequest.send()
+      checkRequest.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+            let resp = JSON.parse(checkRequest.response)
+            finalStatusText.innerHTML = "Success!"
+            
+            window.location.href="#sixthSection"
+            showSuccessImages(resp['short_result'])
+            submitBtn.disabled = false
+            submitBtn.classList.remove('disabled')
+            
+          }
+      }
+    }
+
+    function getFailure() {
+      var checkRequest = new XMLHttpRequest()
+      checkRequest.open('GET', '/result/' + task_id.toString())
+      checkRequest.send()
+      checkRequest.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+            let resp = JSON.parse(checkRequest.response)
+            finalStatusText.innerHTML = "Some error has occured, we are looking into it."
+            submitBtn.disabled = false
+            document.getElementById("success-remove").classList.add('remove-element')
+            submitBtn.classList.remove('disabled')
+            submitBtn.classList.remove('remove-element')
+          }
+      }
+    }
+
+    resetButton.addEventListener('click', ()  => {
+      resetButton.classList.add('remove-element')
+      submitBtn.classList.remove('disabled')
+      submitBtn.disabled = false
+      document.getElementById('success-remove').style.display = null
+      submitBtn.classList.remove('remove-element')
+      submitBtn.style.display = null
+      finalImageHolder.innerHTML = ""
+      finalStatusText.innerHTML = "GET PREDICTIONS"
+      window.location.href="#fourthSection"
+    })
+
+
+    function showSuccessImages(imageNames) {
+      document.getElementById("success-remove").classList.add('remove-element')
+      finalImageHolder.innerHTML = ""
+      let imageOptions = imageNames.split('|')
+      console.log(imageOptions)
+      if (imageOptions[0] == 'ERR') {
+        
+          submitBtn.disabled = false
+          submitBtn.disabled = false
+          submitBtn.classList.remove('disabled')
+      } else {
+          resetButton.classList.remove('remove-element')
+          document.getElementById('success-remove').style.display = "none"
+          submitBtn.style.display = "none"
+        for (imageOption in imageOptions) {
+          
+          let node = document.createRange().createContextualFragment(getImageTag(imageOptions[imageOption]))
+          finalImageHolder.appendChild(node)
+          //finalImageHolder.innerHTML = getImageTag(imageOptions[imageOption]) + finalImageHolder.innerHTML
+        }
+      }
+      
+      //finalImageHolder
+    }
+
+    function getStarting() {
+      return '<div class="final-image-holder from-server img-3d-shadow animate__animated animate__fadeIn d-flex align-items-center" style="border-radius: 10px;"><img src="static/images/'
+    }
+
+    function getEnd() {
+      return '.jpg")}}" onclick="activateLightBox(this)" class="img-fluid  mx-auto d-block uploaded-image output-images" style="max-height: 100%; max-width: 100%"/></div>'
+    }
+
+    function getImageTag(imageName) {
+      console.log(imageName)
+      let ImageTag = getStarting() + imageName + getEnd() 
+      console.log(ImageTag)
+      return ImageTag
+    }
+
+    var lightbox = document.getElementById('lightbox')
+
+    function activateLightBox(item) {   
+      //console.log(item.src)
+      lightbox.classList.add('active')
+      const img = document.createElement('img')
+      img.src = item.src
+      while(lightbox.firstChild) {
+        lightbox.removeChild(lightbox.firstChild)
+      }
+      lightbox.appendChild(img)
+    }
+
+    lightbox.addEventListener('click', e => {
+      if (e.target !== e.currentTarget) return 
+      lightbox.classList.remove('active')
+    })
+
+  </script>
+
+</body>
+</html>
